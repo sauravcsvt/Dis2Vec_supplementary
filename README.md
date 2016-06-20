@@ -19,7 +19,7 @@ for that taxonomical category (``symptoms``, ``exposures``, ``tx_methods`` and `
 To extract the embeddings from a .bin file, you have to install the gensim
 package in python and perform the following steps.
 
-``>> from gensim.models import word2vec``
+``>> from gensim.models import word2vec`` \\
 ``>> model_Dis2Vec = word2vec.Word2vec.load_word2vec_format("Dis2Vec_embeddings_symptoms_rare_diseases.bin", binary=True, unicode_errors='ignore')``
 
 To extract the embedding for any word, say ``salmonella``, we have to perform the following step.
