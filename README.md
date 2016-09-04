@@ -2,8 +2,10 @@
 Supplementary information for Dis2Vec
 
 This repository contains the source codes and other supplementary information associated with the manuscript entitled 
-``Characterizing Diseases from Unstructured Text: A Vocabulary Driven Word2vec Approach`` accepted in. The manuscript can be accessed at
-[Dis2Vec-pdf](https://arxiv.org/pdf/1603.00106.pdf).
+``Characterizing Diseases from Unstructured Text: A Vocabulary Driven Word2vec Approach`` accepted in CIKM 2016. The manuscript 
+can be accessed at [Dis2Vec-pdf](https://arxiv.org/pdf/1603.00106.pdf).
+
+## Source Code
 
 ## Disease Classification
 
