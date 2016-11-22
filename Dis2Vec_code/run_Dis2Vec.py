@@ -19,14 +19,12 @@ logging.basicConfig()
 
 def perform_word2vec(sent_list, vec_dim, win_size, count_min, SG_negative, iter_corpus, spm, opm, smoothing, vocab_file):
 
-    print len(sent_list), vec_dim, win_size, count_min, SG_negative, iter_corpus, spm, opm, smoothing, vocab_file
     start_time = time.time()
     model_HM = Word2Vec(sent_list, size=vec_dim, window=win_size, 
                         min_count=count_min, sample=1e-05, workers=100,
                         sg=1, hs=0, negative=SG_negative, iter=iter_corpus, sampling_param=spm, objective_param=opm, smoothing=smoothing, vocab_file=vocab_file)
-    print model_HM
     end_time = time.time()
-    print (end_time - start_time) / 3600., "hours"
+    print "Total time taken is: " + str((end_time - start_time) / 3600.) + " hours"
     out_folder = './output/'
     if not os.path.isdir(out_folder):
         os.makedirs(out_folder)
