@@ -9,6 +9,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append("./gensim/")
+import os
 import cPickle as pickle
 from gensim.models import Word2Vec
 import time
@@ -27,6 +28,8 @@ def perform_word2vec(sent_list, vec_dim, win_size, count_min, SG_negative, iter_
     end_time = time.time()
     print (end_time - start_time) / 3600., "hours"
     out_folder = './output/'
+    if not os.path.isdir(out_folder):
+        os.makedirs(out_folder)
     if model_HM.sample == 0:
         model_HM.save(out_folder + 'model_all_vocab_' + str(vec_dim) + "_" + str(win_size) + "_" + str(count_min) + "_" + str(SG_negative) + "_" + str(spm) + "_" + str(opm) + "_" + str(smoothing) + "_" + str(iter_corpus) + '.word2vec')
     else:
