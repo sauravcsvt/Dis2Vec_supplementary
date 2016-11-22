@@ -8,10 +8,10 @@ __email__ = "sauravcsvt@vt.edu"
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+sys.path.append("./gensim/")
 import cPickle as pickle
 from gensim.models import Word2Vec
 import time
-
 import logging
 logging.basicConfig()
 
@@ -35,9 +35,9 @@ def perform_word2vec(sent_list, vec_dim, win_size, count_min, SG_negative, iter_
 
 def main():
 
-    sentences_corpus = pickle.load(open(sys.argv[1], "r")) # list of sentences as input (pickle file) where each sentence is a list of tokens
-    domain_vocab_file = sys.argv[2] # for our study, its the disease vocabulary. For adapting to other domain, you have to supply your domain-specific vocabulary
-    param_list = {"dim": 600, "win": [15], "min_cnt": 5, "neg": [1, 5, 15], "iter": 1, "spm": [0.3, 0.5, 0.7], "opm": [0.3, 0.5, 0.7], "smoothing": [0.75, 1.0]}
+    sentences_corpus = pickle.load(open(sys.argv[1], "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
+    domain_vocab_file = sys.argv[2] # domain-specific vocabulary. file should be in .pkl format
+    param_list = {"dim": 300, "win": [15], "min_cnt": 5, "neg": [1, 5, 15], "iter": 1, "spm": [0.3, 0.5, 0.7], "opm": [0.3, 0.5, 0.7], "smoothing": [0.75, 1.0]}
     for param_win in param_list['win']:
         for param_neg in param_list['neg']:
             for param_spm in param_list['spm']:
