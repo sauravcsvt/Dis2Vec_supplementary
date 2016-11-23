@@ -5,11 +5,12 @@
 __author__ = "Saurav Ghosh"
 __email__ = "sauravcsvt@vt.edu"
 
+import os
+os.system("unzip Dis2Vec.zip -d ./")
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 sys.path.append("./Dis2Vec/")
-import os
 import cPickle as pickle
 from gensim.models import Word2Vec
 import time
