@@ -8,7 +8,7 @@ __email__ = "sauravcsvt@vt.edu"
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
-sys.path.append("./gensim/")
+sys.path.append("./Dis2Vec/")
 import os
 import cPickle as pickle
 from gensim.models import Word2Vec
