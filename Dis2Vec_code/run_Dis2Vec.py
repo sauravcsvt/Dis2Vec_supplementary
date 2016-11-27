@@ -15,6 +15,7 @@ import cPickle as pickle
 from gensim.models import Word2Vec
 import time
 import logging
+import argparse
 logging.basicConfig()
 
 
@@ -34,11 +35,18 @@ def perform_word2vec(sent_list, vec_dim, win_size, count_min, SG_negative, iter_
     else:
         model_HM.save(out_folder + 'model_all_vocab_' + str(vec_dim) + "_" + str(win_size) + "_" + str(count_min) + "_" + str(SG_negative) + "_" + str(spm) + "_" + str(opm) + "_" + str(smoothing) + "_" + str(iter_corpus) + 'w_sample.word2vec')
 
+def parse_args():
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-ic", "--inputcorpus", type = str, required = True, help = "Input corpus which should be a list of sentences as input where each sentence is a list of tokens. file should be in .pkl format")
+    ap.add_argument("-v", "--domainvocab", type = str, required = True, help = "Domain-specific vocabulary. file should be in .pkl format")
+    return ap.parse_args()
 
 def main():
 
-    sentences_corpus = pickle.load(open(sys.argv[1], "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
-    domain_vocab_file = sys.argv[2] # domain-specific vocabulary. file should be in .pkl format
+    _arg = parse_args()
+    sentences_corpus = pickle.load(open(_arg.inputcorpus, "r")) # Input corpus (list of sentences as input where each sentence is a list of tokens. file should be in .pkl format).
+    domain_vocab_file = _arg.domainvocab # domain-specific vocabulary. file should be in .pkl format
     param_list = {"dim": 300, "win": [15], "min_cnt": 5, "neg": [1, 5, 15], "iter": 1, "spm": [0.3, 0.5, 0.7], "opm": [0.3, 0.5, 0.7], "smoothing": [0.75, 1.0]}
     for param_win in param_list['win']:
         for param_neg in param_list['neg']:
